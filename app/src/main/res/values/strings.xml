@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CountriesApp</string>
+    <string name="no_network_connectivity">No Network Connectivity</string>
+</resources>
