@@ -1,7 +1,6 @@
 package aish.android.countries
 
 import aish.android.countries.databinding.FragmentCountriesBinding
-import aish.android.countries.databinding.FragmentCountriesBindingImpl
 import aish.android.countries.viewmodel.CountriesViewModel
 import aish.android.countries.views.CountriesAdapter
 import android.os.Bundle
