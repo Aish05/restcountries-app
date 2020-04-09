@@ -23,16 +23,13 @@ class CountriesViewModel(private val repository : CountriesRepository) : ViewMod
         viewModelScope.launch {
             val result =  repository.getAllCountries()
 
+            showLoading.set(false)
             when (result) {
                 is AppResult.Success -> {
                     countriesList.value = result.successData
                     showError.value = null
-                    showLoading.set(false)
                 }
-                is AppResult.Error ->  {
-                    showLoading.set(false)
-                    showError.value = result.exception.message
-                }
+                is AppResult.Error -> showError.value = result.exception.message
             }
         }
     }
