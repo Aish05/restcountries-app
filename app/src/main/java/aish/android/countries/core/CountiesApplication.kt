@@ -1,4 +1,4 @@
-package aish.android.countries
+package aish.android.countries.core
 
 import aish.android.countries.di.*
 import android.app.Application

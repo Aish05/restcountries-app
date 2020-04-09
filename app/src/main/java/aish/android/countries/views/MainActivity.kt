@@ -1,14 +1,10 @@
-package aish.android.countries
+package aish.android.countries.views
 
+import aish.android.countries.R
 import aish.android.countries.util.replaceFragment
-import aish.android.countries.viewmodel.CountriesViewModel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +23,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun addCountriesFragment() {
         /* Display First Fragment initially */
-        replaceFragment(CountriesFragment(), R.id.fragment_container)
+        replaceFragment(CountriesFragment(),
+            R.id.fragment_container
+        )
     }
 
 }

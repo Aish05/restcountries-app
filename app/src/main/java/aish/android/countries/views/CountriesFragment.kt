@@ -1,8 +1,8 @@
-package aish.android.countries
+package aish.android.countries.views
 
+import aish.android.countries.R
 import aish.android.countries.databinding.FragmentCountriesBinding
 import aish.android.countries.viewmodel.CountriesViewModel
-import aish.android.countries.views.CountriesAdapter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,7 +23,8 @@ class CountriesFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mViewDataBinding  = DataBindingUtil.inflate(inflater, R.layout.fragment_countries, container, false)
+        mViewDataBinding  = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_countries, container, false)
         val mRootView = mViewDataBinding.root
         mViewDataBinding.lifecycleOwner = this
         return mRootView
