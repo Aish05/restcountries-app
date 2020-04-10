@@ -12,6 +12,10 @@
             name="countries"
             type="aish.android.countries.db.model.CountriesData" />
 
+        <variable
+            name="countryClickInterface"
+            type="aish.android.countries.views.CountryClickListener" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -21,6 +25,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         card_view:cardElevation="3dp"
+        android:onClick="@{() -> countryClickInterface.onItemClick(countries)}"
         card_view:layout_constraintEnd_toEndOf="parent"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent">

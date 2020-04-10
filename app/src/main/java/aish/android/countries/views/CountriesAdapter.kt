@@ -10,13 +10,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CountriesAdapter(val context: Context?) : RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder>() {
+class CountriesAdapter(val context: Context?,
+    val clickListener: CountryClickListener) : RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder>() {
 
     var countriesList: List<CountriesData> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountriesViewHolder {
-        val viewBinding: CountriesRowBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),
-                R.layout.countries_row, parent, false)
+        val viewBinding: CountriesRowBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.countries_row, parent, false
+        )
         return CountriesViewHolder(viewBinding)
     }
 
@@ -34,12 +37,13 @@ class CountriesAdapter(val context: Context?) : RecyclerView.Adapter<CountriesAd
         notifyDataSetChanged()
     }
 
-    inner class CountriesViewHolder(private val viewBinding: CountriesRowBinding)
-        :  RecyclerView.ViewHolder(viewBinding.root) {
+    inner class CountriesViewHolder(private val viewBinding: CountriesRowBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {
 
         fun onBind(position: Int) {
             val row = countriesList[position]
             viewBinding.countries = row
+            viewBinding.countryClickInterface = clickListener
         }
     }
 

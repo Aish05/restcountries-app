@@ -21,6 +21,10 @@ android {
         enabled = true
     }
 
+    androidExtensions {
+        experimental = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false

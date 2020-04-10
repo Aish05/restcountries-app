@@ -1,9 +1,12 @@
 package aish.android.countries.db.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "Languages")
+@Parcelize
 data class Languages(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val bwg: String?,
@@ -21,4 +24,4 @@ data class Languages(
     val ven: String?,
     val xho: String?,
     val zib: String?
-)
+) : Parcelable

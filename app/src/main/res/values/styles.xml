@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="header_text">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="normal_text">
         <item name="android:textColor">@color/secondaryTextColor</item>
         <item name="android:fontFamily">@font/roboto_regular</item>

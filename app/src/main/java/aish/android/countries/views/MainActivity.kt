@@ -4,6 +4,7 @@ import aish.android.countries.R
 import aish.android.countries.util.replaceFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,21 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(CountriesFragment(),
             R.id.fragment_container
         )
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
