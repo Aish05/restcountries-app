@@ -11,7 +11,7 @@ import androidx.room.Query
 interface CountriesDao {
 
     @Query("SELECT * FROM Countries")
-    fun findAll(): LiveData<List<CountriesData>>
+    fun findAll(): List<CountriesData>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun add(users: List<CountriesData>)
