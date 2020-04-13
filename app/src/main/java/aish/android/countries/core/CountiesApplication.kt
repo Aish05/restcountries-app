@@ -21,6 +21,5 @@ class CountiesApplication : Application() {
                 databaseModule
             )
         }
-
     }
 }
