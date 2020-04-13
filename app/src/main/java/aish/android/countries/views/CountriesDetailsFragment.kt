@@ -48,6 +48,11 @@ class CountriesDetailsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         enableBackButton()
         mViewDataBinding.country = country
+        var currency : String = ""
+        country?.currency?.forEach {
+             currency = "$it "
+        }
+        mViewDataBinding.currency = currency
     }
 
     private fun enableBackButton() {

@@ -3,4 +3,7 @@
     <string name="no_network_connectivity">No Network Connectivity</string>
     <string name="country_region">Country Region :</string>
     <string name="country_currency">Country Currency</string>
+    <string name="country_sub_region">Country SubRegion :</string>
+    <string name="country_language">Country Languages :</string>
+    <string name="country_capital">Country Capital</string>
 </resources>
