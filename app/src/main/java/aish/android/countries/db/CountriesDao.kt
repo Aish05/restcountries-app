@@ -2,17 +2,21 @@ package aish.android.countries.db
 
 import aish.android.countries.db.model.CountriesData
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import io.realm.Realm
+import io.realm.RealmList
+import io.realm.RealmResults
 
-@Dao
+
 interface CountriesDao {
 
-    @Query("SELECT * FROM Countries")
+    fun add(countries: RealmList<CountriesData>): Boolean
     fun findAll(): List<CountriesData>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun add(users: List<CountriesData>)
+    fun closeInstance()
+
+    /*fun delStudent(realm: Realm, _ID: Int): Boolean
+    fun editStudent(realm: Realm, student: Student): Boolean
+    fun getStudent(realm: Realm, studentId: Int): Student
+    fun removeLastStudent(realm: Realm)*/
+
 }

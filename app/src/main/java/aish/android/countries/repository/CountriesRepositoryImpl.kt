@@ -11,8 +11,9 @@ import aish.android.countries.util.Utils.handleSuccess
 import aish.android.countries.util.noNetworkConnectivityError
 import android.content.Context
 import android.util.Log
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import io.realm.RealmList
+import io.realm.RealmResults
+
 
 class CountriesRepositoryImpl(
     private val api: CountriesApi,
@@ -28,7 +29,10 @@ class CountriesRepositoryImpl(
                 if (response.isSuccessful) {
                     //save the data
                     response.body()?.let {
-                        withContext(Dispatchers.IO) { dao.add(it) }
+                        val countries : RealmList<CountriesData> = RealmList()
+                        countries.addAll(it)
+                        val isAdded = dao.add(countries)
+                        Log.d(TAG, isAdded.toString())
                     }
                     handleSuccess(response)
                 } else {
@@ -49,26 +53,12 @@ class CountriesRepositoryImpl(
         }
     }
 
-    private suspend fun getCountriesDataFromCache(): List<CountriesData> {
-        return withContext(Dispatchers.IO) {
-            dao.findAll()
-        }
+    override fun clear() {
+        dao.closeInstance()
     }
 
-/*
-This is another way of implementing where the source of data is db and api but we can always fetch from db
-which will be updated with the latest data from api and also change findAll() return type to
-LiveData<List<CountriesData>>
-*/
-    /* val data = dao.findAll()
-
-     suspend fun getAllCountriesData() {
-         withContext(Dispatchers.IO) {
-             val response = api.getAllCountries()
-             response.body()?.let {
-                 withContext(Dispatchers.IO) { dao.add(it) }
-             }
-         }
-     }*/
+    private  fun getCountriesDataFromCache(): List<CountriesData> {
+        return dao.findAll()
+    }
 
 }

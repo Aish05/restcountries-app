@@ -61,7 +61,7 @@ class CountriesFragment : Fragment(), CountryClickListener {
     }
 
     override fun onItemClick(country : CountriesData) {
-        (activity as MainActivity).replaceFragment(CountriesDetailsFragment.newInstance(country),
-            R.id.fragment_container, "countriesdetails")
+      /*  (activity as MainActivity).replaceFragment(CountriesDetailsFragment.newInstance(country),
+            R.id.fragment_container, "countriesdetails")*/
     }
 }

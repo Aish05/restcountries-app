@@ -137,7 +137,7 @@
         <TextView
             android:id="@+id/country_language"
             style="@style/normal_text"
-            android:text="@{country.nativeLanguage)}"
+            android:text="@{country.nativeLanguage}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
