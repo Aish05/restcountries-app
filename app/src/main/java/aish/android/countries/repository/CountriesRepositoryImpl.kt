@@ -11,8 +11,8 @@ import aish.android.countries.util.Utils.handleSuccess
 import aish.android.countries.util.noNetworkConnectivityError
 import android.content.Context
 import android.util.Log
-import io.realm.RealmList
-import io.realm.RealmResults
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 
 class CountriesRepositoryImpl(
@@ -29,10 +29,10 @@ class CountriesRepositoryImpl(
                 if (response.isSuccessful) {
                     //save the data
                     response.body()?.let {
-                        val countries : RealmList<CountriesData> = RealmList()
-                        countries.addAll(it)
-                        val isAdded = dao.add(countries)
-                        Log.d(TAG, isAdded.toString())
+                        withContext(Dispatchers.IO) {
+                            val isAdded = dao.add(it)
+                            Log.d("isAdded", isAdded.toString())
+                        }
                     }
                     handleSuccess(response)
                 } else {
@@ -53,12 +53,10 @@ class CountriesRepositoryImpl(
         }
     }
 
-    override fun clear() {
-        dao.closeInstance()
-    }
-
-    private  fun getCountriesDataFromCache(): List<CountriesData> {
-        return dao.findAll()
+    private suspend fun getCountriesDataFromCache(): List<CountriesData> {
+        return withContext(Dispatchers.IO) {
+            dao.findAll()
+        }
     }
 
 }

@@ -34,8 +34,4 @@ class CountriesViewModel(private val repository : CountriesRepository) : ViewMod
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        repository.clear()
-    }
 }

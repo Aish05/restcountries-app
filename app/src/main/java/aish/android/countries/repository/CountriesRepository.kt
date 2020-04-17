@@ -6,5 +6,4 @@ import androidx.lifecycle.LiveData
 
 interface CountriesRepository {
     suspend fun getAllCountries() : AppResult<List<CountriesData>>
-    fun clear()
 }

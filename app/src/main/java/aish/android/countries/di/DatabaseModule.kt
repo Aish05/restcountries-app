@@ -11,21 +11,11 @@ import org.koin.dsl.module
 
 val databaseModule = module {
 
-    fun provideRealmDatabase(application: Application): Realm {
-        Realm.init(application)
-        val builder = RealmConfiguration.Builder()
-        builder.name("countries")
-        val config = builder.build()
-        return Realm.getInstance(config)
+    fun provideCountriesDao(): CountriesDao {
+        return CountriesDaoImpl()
     }
 
-
-    fun provideCountriesDao(realm: Realm): CountriesDao {
-        return CountriesDaoImpl(realm)
-    }
-
-    single { provideRealmDatabase(androidApplication()) }
-    single { provideCountriesDao(get()) }
+    factory { provideCountriesDao() }
 
 }
 
