@@ -12,6 +12,6 @@ open class Name(
     var native: Native? = null
 ) :  RealmObject() {
     @PrimaryKey
-    var id: Int = 0
+    var id: Int? = 0
 
 }

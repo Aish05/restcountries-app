@@ -3,19 +3,26 @@ package aish.android.countries.db
 import aish.android.countries.db.model.CountriesData
 import android.util.Log
 import io.realm.Realm
-import io.realm.RealmList
+import io.realm.RealmObject
 
-class CountriesDaoImpl() : CountriesDao {
+
+class CountriesDaoImpl : CountriesDao {
 
     override fun add(countries: List<CountriesData>): Boolean {
         return try {
             val realm = Realm.getDefaultInstance()
+            countries.forEach {
+                it.id = (setUniqueId())
+                it.name?.id = (setUniqueId())
+                it.languages?.id = (setUniqueId())
+            }
             realm.executeTransaction{realm1 ->
                 realm1.insertOrUpdate(countries)
             }
             realm.close()
             true
         } catch (e: Exception) {
+            println(e)
             Log.d("Adding Exception", e.message)
             false
         }
@@ -36,5 +43,11 @@ class CountriesDaoImpl() : CountriesDao {
             realm1.delete(CountriesData::class.java)
         }
         realm.close()
+    }
+
+    var num = 0
+    fun setUniqueId(): Int {
+        num += 1
+        return num
     }
 }

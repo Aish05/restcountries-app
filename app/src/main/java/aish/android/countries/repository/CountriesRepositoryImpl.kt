@@ -11,9 +11,9 @@ import aish.android.countries.util.Utils.handleSuccess
 import aish.android.countries.util.noNetworkConnectivityError
 import android.content.Context
 import android.util.Log
+import io.realm.RealmObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-
 
 class CountriesRepositoryImpl(
     private val api: CountriesApi,
@@ -49,7 +49,7 @@ class CountriesRepositoryImpl(
                 AppResult.Success(data)
             } else
             //no network
-              context.noNetworkConnectivityError()
+                context.noNetworkConnectivityError()
         }
     }
 
@@ -58,5 +58,7 @@ class CountriesRepositoryImpl(
             dao.findAll()
         }
     }
+
+
 
 }
